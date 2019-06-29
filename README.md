@@ -1,9 +1,9 @@
 # http-example
-Sample code in iOS to post to the web, and get a response back.
+Sample code for iOS and Android, to post to the web, and get a response back.
 
-Lots of apps need to be able to retrieve data from the web, so this is a simple example to do it (with both iOS and Android versions in the repository).
+Lots of apps need to be able to retrieve data from the web, so this is a simple example to do it.
 
-There's a simple PHP script running on the CS department web server that expects a number to come in from a "post" HTTP request. It then doubles that number, and returns the result as JSON.  The apps take a number typed into a text box on screen, send that to the web server (using a couple of simplified wrappers around the standard HTTP tools), and then put the result on screen when the web server respons.
+There's a simple PHP script running on the CS department web server that expects a number to come in from a "post" HTTP request. It then doubles that number, and returns the result as JSON.  The apps take a number typed into a text box on screen, send that to the web server (using a couple of simplified wrappers around the standard HTTP tools), and then put the result on screen when the web server response.
 
 There are a couple of "gotchas" to be careful of -- mostly revolving around the asynchronous nature of web interactions.  The iOS version of the code has a "completion block" that gets called when the response from the web server comes in.  THIS IS ON A THREAD THAT CANNOT ACCESS THE USER INTERFACE!  Note that in the ViewController, there is "performSelectorOnMainThread", which is called from the completion block.  This puts a request to call the function into a queue, and then when a thread that has access to the user interface runs, the function is called.
 
